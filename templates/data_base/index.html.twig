@@ -1,0 +1,235 @@
+{% extends 'dashbord.html.twig' %}
+{% block title %}data {% endblock %}
+{% block body %}
+
+
+<div class="main-panel">
+			<div class="content">
+				<div class="page-inner">
+
+		<div class="page-header">
+			</div>
+                  <div class="row">
+                      <div class="col-md-12">
+							<div class="card">
+								<div class="card-header">
+									<h4 class="card-title">Données LM/LShop</h4>
+								</div>
+								<div class="card-body">
+									<div class="table-responsive">
+										<table id="multi-filter-select" class="display table table-striped table-hover" >
+											<thead>
+										
+							<tr style="background-color:#0c5b8f; color:white;">
+                            <th>Nom</th>
+                            <th>Domaine</th>
+                            <th>Adresse</th>
+                           <th>Email</th>
+                           <th>Num  Tel</th>
+						   <th>Commentaire</th>
+
+                        </tr>
+											</thead>
+											<tbody> 
+                            {% for agence in agence %}
+                                <tr>
+                                <td  >{{ agence.Representant|e }}  </td>
+                                <td  >{{ agence.Fonction|e }}  </td>
+                                <td  >{{ agence.Adresse|e }} </td>
+                                <td  >{{ agence.Mail|e }} </td>
+                                <td  >{{ agence.Telephone|e }} </td>
+                                <td  ></td>
+                                </tr class="tab1">
+                            {% endfor %}
+
+							{% for artistes in artistes %}
+                                <tr>
+                                <td  >{{ artistes.Nom|e }}  </td>
+                                <td  >{{ artistes.Domaine|e }}  </td>
+                                <td  >{{ artistes.PaysDActivite|e }} </td>
+                                <td  >{{ artistes.EMail|e }} </td>
+                                <td  >{{ artistes.num|e }} </td>
+                                <td  ></td>
+                                </tr class="tab1">
+                            {% endfor %}
+							{% for cinema in cinema %}
+                                <tr>
+                                <td  >{{ cinema.Enseigne|e }}  </td>
+                                <td  >{{ cinema.Fonction|e }}  </td>
+                                <td  >{{ cinema.Adresse|e }} </td>
+                                <td  >{{ cinema.eMail|e }} </td>
+                                <td  >{{ cinema.numTel|e }} </td>
+                                <td  >{{ cinema.Commentaire|e }}</td>
+                                </tr class="tab1">
+                            {% endfor %}
+							
+							{% for diplomatie in diplomatie %}
+                                <tr>
+                                <td  >{{ diplomatie.Representant|e }}  </td>
+                                <td  >{{ diplomatie.Type|e }}  </td>
+                                <td  >{{ diplomatie.Adresse|e }} </td>
+                                <td  >{{ diplomatie.eMail|e }} </td>
+                                <td  >{{ diplomatie.Telephone|e }} </td>
+                                <td  ></td>
+                                </tr class="tab1">
+                            {% endfor %}
+							{% for divertissement in divertissement %}
+                                <tr>
+                                <td  >{{ divertissement.Personne|e }}  </td>
+                                <td  >{{ divertissement.Fonction|e }}  </td>
+                                <td  >{{ divertissement.Adresse|e }} </td>
+                                <td  >{{ divertissement.email|e }} </td>
+                                <td  >{{ divertissement.numero|e }} </td>
+                                <td  ></td>
+                                </tr class="tab1">
+                            {% endfor %}
+							{% for foodie in foodie %}
+                                <tr>
+                                <td  >{{ foodie.Enseigne|e }}  </td>
+                                <td  >{{ foodie.Type|e }}  </td>
+                                <td  >{{ foodie.Adresse|e }} </td>
+                                <td  >{{ foodie.email|e }} </td>
+                                <td  >{{ foodie.numTel|e }} </td>
+                                <td  >{{ foodie.Commentaire|e }}</td>
+                                </tr class="tab1">
+                            {% endfor %}
+							{% for cosmetique in cosmetique %}
+                                <tr>
+                                <td  >{{ cosmetique.Enseigne|e }}  </td>
+                                <td  >{{ cosmetique.Type|e }}  </td>
+                                <td  >{{ cosmetique.Adresse|e }} </td>
+                                <td  >{{ cosmetique.EMail|e }} </td>
+                                <td  >{{ cosmetique.numTel|e }} </td>
+                                <td  >{{ cosmetique.Commentaire|e }}</td>
+                                </tr class="tab1">
+                            {% endfor %}
+							{% for dataLm in dataLm %}
+                                <tr>
+                                <td  >{{ dataLm.Enseigne|e }}  </td>
+                                <td  >{{ dataLm.Type|e }}  </td>
+                                <td  >{{ dataLm.Adresse|e }} </td>
+                                <td  >{{ dataLm.email|e }} </td>
+                                <td  >{{ dataLm.numTel|e }} </td>
+                                <td  >{{ dataLm.Commentaire|e }}</td>
+                                </tr class="tab1">
+                            {% endfor %}
+							{% for dataRpms in dataRpms %}
+                                <tr>
+                                <td  >{{ dataRpms.Representant|e }}  </td>
+                                <td  >{{ dataRpms.Fonction|e }}  </td>
+                                <td  >{{ dataRpms.Adresse|e }} </td>
+                                <td  >{{ dataRpms.mail|e }} </td>
+                                <td  >{{ dataRpms.Telephone|e }} </td>
+                                <td  ></td>
+                                </tr class="tab1">
+                            {% endfor %}
+							{% for hotele in hotele %}
+                                <tr>
+                                <td  >{{ hotele.MaisonDHotes|e }}  </td>
+                                <td  >{{ hotele.Type|e }}  </td>
+                                <td  >{{ hotele.Adresse|e }} </td>
+                                <td  >{{ hotele.EMail|e }} </td>
+                                <td  >{{ hotele.numTel|e }} </td>
+                                <td  ></td>
+                                </tr class="tab1">
+                            {% endfor %}
+							{% for journalistes in journalistes %}
+                                <tr>
+                                <td  >{{ journalistes.Personne|e }}  </td>
+                                <td  >{{ journalistes.Fonction|e }}  </td>
+                                <td  >{{ journalistes.Adresse|e }} </td>
+                                <td  >{{ journalistes.email|e }} </td>
+                                <td  >{{ journalistes.numero|e }} </td>
+                                <td  ></td>
+                                </tr class="tab1">
+                            {% endfor %}
+							{% for shop in shop %}
+                                <tr>
+                                <td  >{{ shop.Enseigne|e }}  </td>
+                                <td  >{{ shop.Type|e }}  </td>
+                                <td  >{{ shop.Adresse|e }} </td>
+                                <td  >{{ shop.email|e }} </td>
+                                <td  >{{ shop.numTel|e }} </td>
+                                <td  >{{ shop.Commentaire|e }}</td>
+                                </tr class="tab1">
+                            {% endfor %}
+
+                                 </tbody>
+										</table>
+									</div>
+								</div>    
+							</div>
+						</div>
+		</div>
+        
+
+
+
+
+		
+<!--   Core JS Files   -->
+	<script src="{{ asset('admin/js/core/jquery.3.2.1.min.js')}}"></script>
+	<script src="{{ asset('admin/js/core/popper.min.js')}}"></script>
+	<script src="{{ asset('admin/js/core/bootstrap.min.js')}}"></script>
+	<!-- jQuery UI -->
+	<script src="{{ asset('admin/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js')}}"></script>
+	<script src="{{ asset('admin/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js')}}"></script>
+	
+	<!-- jQuery Scrollbar -->
+	<script src="{{ asset('admin/assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js')}}"></script>
+	<!-- Datatables -->
+	<script src="{{ asset('admin/assets/js/plugin/datatables/datatables.min.js')}}"></script>
+	<!-- Atlantis JS -->
+	<script src="{{ asset('admin/js/atlantis.min.js')}}"></script>
+	<!-- Atlantis DEMO methods, don't include it in your project! -->
+	<script src="{{ asset('admin/js/setting-demo2.js')}}"></script>
+	<script >
+		$(document).ready(function() {
+			$('#basic-datatables').DataTable({
+			});
+
+			$('#multi-filter-select').DataTable( {
+				"pageLength": 5,
+				initComplete: function () {
+					this.api().columns().every( function () {
+						var column = this;
+						var select = $('<select class="form-control"><option value=""></option></select>')
+						.appendTo( $(column.footer()).empty() )
+						.on( 'change', function () {
+							var val = $.fn.dataTable.util.escapeRegex(
+								$(this).val()
+								);
+
+							column
+							.search( val ? '^'+val+'$' : '', true, false )
+							.draw();
+						} );
+
+						column.data().unique().sort().each( function ( d, j ) {
+							select.append( '<option value="'+d+'">'+d+'</option>' )
+						} );
+					} );
+				}
+			});
+
+			// Add Row
+			$('#add-row').DataTable({
+				"pageLength": 5,
+			});
+
+			var action = '<td> <div class="form-button-action"> <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task"> <i class="fa fa-edit"></i> </button> <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove"> <i class="fa fa-times"></i> </button> </div> </td>';
+
+			$('#addRowButton').click(function() {
+				$('#add-row').dataTable().fnAddData([
+					$("#addName").val(),
+					$("#addPosition").val(),
+					$("#addOffice").val(),
+					action
+					]);
+				$('#addRowModal').modal('hide');
+
+			});
+		});
+	</script>
+
+{% endblock %}

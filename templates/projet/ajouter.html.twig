@@ -1,0 +1,545 @@
+{% extends 'dashbord.html.twig' %}
+{% block body %}
+
+<div class="main-panel" >
+			<div class="content">
+				<div class="page-inner">
+
+		<div class="page-header">
+			</div>
+                  <div class="row">
+                      <div class="col-md-12">
+							<div class="card" style="border:#2764ffb0 solid 1.5px;">
+								<div class="card-header" lang="fr">
+								<h2 >
+								Créer un projet :
+								</h2>
+								</div>
+								<div class="card-body">
+								<span class="kw" translate="yes" lang="fr">
+									<div class="table-responsive" lang="fr">
+										
+											<form name="superForm">
+
+
+<div id="myDIV">
+
+
+
+<table id="list" class="display table table-striped table-hover" >
+<tr style="background-color:#0c5b8f; color:white;">
+<th>Quantité</th>
+<th>Production Audio visuelle</th>
+<th>prix</th>
+<th>prix de Vente</th>
+</tr>
+<tr><td><h4 style="color:#2764ffb0;">MATERIEL:</h4></td><td></td><td></td></tr>
+{% for tarif in tarif %}
+	{% if tarif.categorie == 'MATERIEL' %}
+
+<td>
+<input type="number"  class="{{tarif.id}}" name="toAdd" id="{{tarif.prix}}" title="{{tarif.prixVente}}"  >
+</td>
+<td>{{tarif.ProductionAudiovisuelle}}</td>
+<td>{{tarif.prix}}</td>
+<td>{{tarif.prixVente}}</td>
+</tr>
+	{% endif %}
+{% endfor %}
+<tr><td><h4 style="color:#2764ffb0;">EQUIPE:</h4></td><td></td><td></td></tr>
+{% for tarif in tarif %}
+	{% if tarif.categorie == "EQUIPE" %}
+
+<td>
+<input type="number"  name="inconnue" id="{{tarif.id}}" title="{{tarif.prixVente}}" class="{{tarif.id}}">
+</td>
+<td>{{tarif.ProductionAudiovisuelle}}</td>
+<td><input type="number"  id="inconnue1"  name="{{tarif.id}}" ></td>
+</td>
+<td>{{tarif.prixVente}}</td>
+</tr>
+	{% endif %}
+{% endfor %}
+<tr><td><h4 style="color:#2764ffb0;">POSTE PRODUCTION</h4></td><td></td><td></td></tr>
+{% for tarif in tarif %}
+	{% if tarif.categorie == "POSTE PRODUCTION" %}
+
+<td>
+<input type="number" name="toAdd" id="{{tarif.prix}}" title="{{tarif.prixVente}}" class="{{tarif.id}}">
+</td>
+<td>{{tarif.ProductionAudiovisuelle}}</td>
+<td>{{tarif.prix}}</td>
+<td>{{tarif.prixVente}}</td>
+</tr>
+	{% endif %}
+{% endfor %}
+<tr><td><h4 style="color:#2764ffb0;">SITE</h4></td><td></td><td></td></tr>
+{% for tarif in tarif %}
+	{% if tarif.categorie == "SITE" %}
+
+<td>
+<input type="number" name="toAdd" id="{{tarif.prix}}" title="{{tarif.prixVente}}" class="{{tarif.id}}">
+</td>
+<td>{{tarif.ProductionAudiovisuelle}}</td>
+<td>{{tarif.prix}}</td>
+<td>{{tarif.prixVente}}</td>
+</tr>
+	{% endif %}
+{% endfor %}
+<tr><td><h4 style="color:#2764ffb0;">CM</h4></td><td></td><td></td></tr>
+{% for tarif in tarif %}
+	{% if tarif.categorie == "CM" %}
+
+<td>
+<input type="number" name="toAdd" id="{{tarif.prix}}" title="{{tarif.prixVente}}" class="{{tarif.id}}">
+</td>
+<td>{{tarif.ProductionAudiovisuelle}}</td>
+<td>{{tarif.prix}}</td>
+<td>{{tarif.prixVente}}</td>
+</tr>
+	{% endif %}
+{% endfor %}
+<tr><td><h4 style="color:#2764ffb0;">GRAPHISME:</h4></td><td></td><td></td></tr>
+{% for tarif in tarif %}
+	{% if tarif.categorie == "GRAPHISME" %}
+
+<td>
+<input type="number" name="toAdd" id="{{tarif.prix}}" title="{{tarif.prixVente}}" class="{{tarif.id}}">
+</td>
+<td>{{tarif.ProductionAudiovisuelle}}</td>
+<td>{{tarif.prix}}</td>
+<td>{{tarif.prixVente}}</td>
+</tr>
+	{% endif %}
+{% endfor %}
+
+<tr><td><h4 style="color:#2764ffb0;">REDACTIONNELLE (VALERIE) :</h4></td><td></td><td></td></tr>
+{% for tarif in tarif %}
+	{% if tarif.categorie == "REDACTIONNELLE" %}
+
+<td>
+<input type="number" name="toAdd" id="{{tarif.prix}}" title="{{tarif.prixVente}}" class="{{tarif.id}}">
+</td>
+<td>{{tarif.ProductionAudiovisuelle}}</td>
+<td>{{tarif.prix}}</td>
+<td>{{tarif.prixVente}}</td>
+</tr>
+	{% endif %}
+{% endfor %}
+
+<tr><td><h4 style="color:#2764ffb0;">LM :</h4></td><td></td><td></td></tr>
+{% for tarif in tarif %}
+	{% if tarif.categorie == "LM" %}
+
+<td>
+<input type="number"  name="inconnue" id="{{tarif.id}}" title="{{tarif.prixVente}}" class="{{tarif.id}}">
+</td>
+<td>{{tarif.ProductionAudiovisuelle}}</td>
+<td><input type="number"  id="inconnue1"  name="{{tarif.id}}"></td>
+<td>{{tarif.prixVente}}</td>
+</tr>
+	{% endif %}
+{% endfor %}
+
+<tr><td><h4 style="color:#2764ffb0;">AUTRES:</h4></td><td></td><td></td></tr>
+{% for tarif in tarif %}
+{% if tarif.categorie not in ["LM","REDACTIONNELLE","GRAPHISME","CM","SITE","POSTE PRODUCTION","EQUIPE","MATERIEL"] %}
+
+<td>
+<input type="number" name="inconnue" id="{{tarif.id}}"title="{{tarif.prixVente}}" class="{{tarif.id}}">
+</td>
+<td>{{tarif.ProductionAudiovisuelle}}</td>
+<td><input type="number"  id="inconnue1"  name="{{tarif.id}}"></td>
+<td>{{tarif.prixVente}}</td>
+</tr>
+	{% endif %}
+{% endfor %}
+<br/>
+<tr></tr>
+<tr><td></td><td>
+<br/>
+<input type="button" value="Terminer la liste" style="background-color:#0c5b8f; color:white;" onclick="compter2()">
+<br/>
+<br/>
+</td><td></td><td></td></tr>
+</table>
+</form>
+</div>
+<div id="myDIV2" style="display:none;">
+{{form_start(form)}}
+
+<table id="list1" class="display table table-striped table-hover">
+<tr><td></td><td>{{ form_row(form.listeServices,{'row_attr':{'id':'array'}})}}</td></tr >
+<tr><td>Description du projet </td><td>{{ form_widget(form.descriptionProjet)}}</td></tr>
+<tr><td>Département </td><td>{{ form_widget(form.departement)}}</td></tr>
+<tr><td>date de début </td><td>{{ form_widget(form.dateDebut,{'row_attr':{'type':'date'}})}}</td></tr>
+<tr><td>date de fin </td><td>{{ form_widget(form.dateFin,{'row_attr':{'placeholder':'jj-mm-aaaa'}})}}</td></tr>
+<tr><td>CR (DT)</td><td>{{ form_widget(form.coutInterne,{'id':'interne'})}}</td></tr>
+<tr><td>prix de vente (DT) </td><td>{{ form_widget(form.prixVent,{'id':'vente'})}}</td></tr>
+<tr><td>prix aprés négociation (DT) </td><td>{{ form_widget(form.prixNegociation,{'id':'negociation'})}}</td></tr>
+<tr><td></td><td>
+<br/>
+<br/>
+<input type="button" value="Suivant" style="background-color:#0c5b8f; color:white;" onclick="compter()"></td><td></td><td></td></tr>
+</table>
+</div>
+<div id="myDIV3" style="display:none;">
+
+<table id="list1" class="display table table-striped table-hover">
+<tr><td>Marge (DT)</td><td>{{ form_widget(form.marge,{'id':'marge'})}}</td></tr >
+<tr><td>Commission (DT)</td><td>{{ form_widget(form.commission,{'id':'commission'})}}</td></tr>
+<tr><td>Pourcentage de réduction (%)</td><td>{{ form_widget(form.pourcentage,{'id':'pourcentage'})}}</td></tr>
+<tr><td>Type de collaboration</td><td>{{ form_widget(form.typeCollaboration,{'id':'typeColaboration'})}}</td></tr>
+<tr><td>durée </td><td>{{ form_widget(form.dureeColaboration,{'id':'duree'})}}</td></tr>
+<tr><td>Pourcentage avance(%)</td><td><input type="number" id="avence"></td></tr>
+<tr><td>Echeance de paiement</td><td>{{ form_widget(form.echeanceDePayement,{'id':'echeanceDePayement'})}}</td></tr>
+<tr><td>Commentaire </td><td>{{ form_widget(form.commentaire,{'id':'commentaire'})}}</td></tr>
+<tr hidden><td></td><td>{{ form_row(form.FournisseurProjet,{'id':'four'})}}</td ></tr >
+<tr><td></td><td>
+<br/>
+<input type="button" value="Suivant"  style="background-color:#0c5b8f; color:white;" onclick="compter3()">
+<br/>
+<br/></td><td></td><td></td></tr>
+</table>
+</div>
+
+<div id="myDIV4" style="display:none;">
+<table id="list1" class="display table table-striped table-hover">
+<tr><td></td><td></td><td><h3  style="color:#2764ffb0;">Fournisseurs</h3></td><td></td></tr>
+<tr style="background-color:#0c5b8f; color:white;"><th></th><th>SOCIETE</th><th>ACTIVITE</th><th>CONTACT</th></tr>
+{% for fournisseurs in fournisseurs %}
+<tr><td><input type="checkbox" name="checks" value="{{fournisseurs.SOCIETE}} {{fournisseurs.ACTIVITE}} {{fournisseurs.CONTACT}}"></td><td>{{fournisseurs.SOCIETE}}</td><td>{{fournisseurs.ACTIVITE}}</td><td>{{fournisseurs.CONTACT}}</td></tr>
+{% endfor %}
+<tr><td></td><td>
+<br/><input type="submit" name="enregistrer"  style="background-color:#0c5b8f; color:white;" onclick="fournisseurs()"/>
+<br/>
+<br/>
+</td></tr>
+</div>
+</table>
+{{form_end(form)}}
+
+
+</div>
+
+</form>
+<script>
+function fournisseurs() {
+   var tableau ="";
+   var checks = document.getElementsByName("checks");
+   for (var i = 0, iMax = checks.length; i < iMax; ++i) {
+
+
+	
+	  
+      if ((checks[i].checked) ) {
+		tableau=tableau+"<br/>"+checks[i].value;
+      }
+	 
+    } 
+	console.log(tableau);
+	document.getElementById("four").value=tableau;
+
+}
+var animateButton = function(e) {
+
+  e.preventDefault;
+  //reset animation
+  e.target.classList.remove('animate');
+  
+  e.target.classList.add('animate');
+  setTimeout(function(){
+    e.target.classList.remove('animate');
+  },700);
+};
+
+var bubblyButtons = document.getElementsByClassName("bubbly-button");
+
+for (var i = 0; i < bubblyButtons.length; i++) {
+  bubblyButtons[i].addEventListener('click', animateButton, false);
+}
+function compter3() {
+   var pourcent = 0;
+   var nego = 0;
+   var nb =0;
+   var vente=0;
+   var nego = document.getElementById("negociation").value;
+   var pourcent = document.getElementById("avence").value;
+document.getElementById("avence").value = (nego*pourcent)/100;
+
+var y = document.getElementById("myDIV3");
+var x = document.getElementById("myDIV4");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+	y.style.display="none";
+  } else {
+    x.style.display = "none";
+  }
+}
+function compter() {
+   var somme = 0;
+   var somme2 = 0;
+   var nb =0;
+   var vente=0;
+   var somme2 = document.getElementById("negociation").value;
+   var somme = document.getElementById("interne").value;
+   var vente = document.getElementById("vente").value;
+document.getElementById("marge").value = somme2-somme;
+document.getElementById("commission").value = (somme2-somme)*5/100;
+if(vente!=0)
+{
+document.getElementById("pourcentage").value = Math.round(100-((somme2*100)/vente));}
+var y = document.getElementById("myDIV2");
+var x = document.getElementById("myDIV3");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+	y.style.display="none";
+  } else {
+    x.style.display = "none";
+  }
+
+
+}
+function compter2() {
+   var somme = 0;
+   var somme2 = 0;
+   var nb =0;
+   var a=0;
+   var b=0;
+   var j=0;
+   var tab  =new Array();
+   let object ={name:"",value:""};
+   var checks = document.forms["superForm"].getElementsByTagName("INPUT");
+   for (var i = 0, iMax = checks.length; i < iMax; ++i) {
+	   if(checks[i].className &&checks[i].value){
+			 tab[parseFloat(checks[i].className)]=parseFloat(checks[i].value);
+		  }
+      if ((checks[i].name == "toAdd"&&checks[i].value) ) {
+         somme=somme+parseFloat(checks[i].value)*parseFloat(checks[i].id);
+		 somme2=somme2+parseFloat(checks[i].value)*parseFloat(checks[i].title);
+		 
+
+      }
+	  if ((checks[i].name == "inconnue"&&checks[i].value) )
+	  {				
+		var inconnue = document.forms["superForm"].getElementsByTagName("INPUT");
+       for (var j = 0, iMax = checks.length; j < iMax; ++j) 
+	   {
+		if(inconnue[j].id=="inconnue1" && inconnue[j].name==checks[i].id && inconnue[j].value) 
+		{
+		somme=somme+parseFloat(checks[i].value)*parseFloat(inconnue[j].value);
+		 somme2=somme2+parseFloat(checks[i].value)*parseFloat(checks[i].title);
+	    }
+	   }
+	  } 
+	       
+		   
+
+   }
+   var input = document.forms["superForm"].getElementsByTagName("INPUT");
+console.log(JSON.stringify(tab));
+document.getElementById("array").value=JSON.stringify(tab);
+document.getElementById("interne").value =somme;
+document.getElementById("vente").value =somme2;
+var y = document.getElementById("myDIV");
+var x = document.getElementById("myDIV2");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+	y.style.display="none";
+  } else {
+    x.style.display = "none";
+  }
+
+
+
+}
+</script>
+<style>
+
+$fuschia: #ff0081;
+$button-bg: $fuschia;
+$button-text-color: #fff;
+$baby-blue: #f8faff;
+
+
+.bubbly-button{
+  font-family: 'Helvetica', 'Arial', sans-serif;
+  display: inline-block;
+  font-size: 1em;
+  padding: 1em 2em;
+  margin-top: 100px;
+  margin-bottom: 60px;
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: $button-bg;
+  color: $button-text-color;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  transition: transform ease-in 0.1s, box-shadow ease-in 0.25s;
+  box-shadow: 0 2px 25px rgba(255, 0, 130, 0.5);
+  
+  &:focus {
+    outline: 0;
+  }
+  
+  &:before, &:after{
+    position: absolute;
+    content: '';
+    display: block;
+    width: 140%;
+    height: 100%;
+    left: -20%;
+    z-index: -1000;
+    transition: all ease-in-out 0.5s;
+    background-repeat: no-repeat;
+  }
+  
+  &:before{
+    display: none;
+    top: -75%;
+    background-image:  
+      radial-gradient(circle, $button-bg 20%, transparent 20%),
+    radial-gradient(circle,  transparent 20%, $button-bg 20%, transparent 30%),
+    radial-gradient(circle, $button-bg 20%, transparent 20%), 
+    radial-gradient(circle, $button-bg 20%, transparent 20%),
+    radial-gradient(circle,  transparent 10%, $button-bg 15%, transparent 20%),
+    radial-gradient(circle, $button-bg 20%, transparent 20%),
+    radial-gradient(circle, $button-bg 20%, transparent 20%),
+    radial-gradient(circle, $button-bg 20%, transparent 20%),
+    radial-gradient(circle, $button-bg 20%, transparent 20%);
+  background-size: 10% 10%, 20% 20%, 15% 15%, 20% 20%, 18% 18%, 10% 10%, 15% 15%, 10% 10%, 18% 18%;
+  //background-position: 0% 80%, -5% 20%, 10% 40%, 20% 0%, 30% 30%, 22% 50%, 50% 50%, 65% 20%, 85% 30%;
+  }
+  
+  &:after{
+    display: none;
+    bottom: -75%;
+    background-image:  
+    radial-gradient(circle, $button-bg 20%, transparent 20%), 
+    radial-gradient(circle, $button-bg 20%, transparent 20%),
+    radial-gradient(circle,  transparent 10%, $button-bg 15%, transparent 20%),
+    radial-gradient(circle, $button-bg 20%, transparent 20%),
+    radial-gradient(circle, $button-bg 20%, transparent 20%),
+    radial-gradient(circle, $button-bg 20%, transparent 20%),
+    radial-gradient(circle, $button-bg 20%, transparent 20%);
+  background-size: 15% 15%, 20% 20%, 18% 18%, 20% 20%, 15% 15%, 10% 10%, 20% 20%;
+  //background-position: 5% 90%, 10% 90%, 10% 90%, 15% 90%, 25% 90%, 25% 90%, 40% 90%, 55% 90%, 70% 90%;
+  }
+ 
+  &:active{
+    transform: scale(0.9);
+    background-color: darken($button-bg, 5%);
+    box-shadow: 0 2px 25px rgba(255, 0, 130, 0.2);
+  }
+  
+  &.animate{
+    &:before{
+      display: block;
+      animation: topBubbles ease-in-out 0.75s forwards;
+    }
+    &:after{
+      display: block;
+      animation: bottomBubbles ease-in-out 0.75s forwards;
+    }
+  }
+}
+
+
+@keyframes topBubbles {
+  0%{
+    background-position: 5% 90%, 10% 90%, 10% 90%, 15% 90%, 25% 90%, 25% 90%, 40% 90%, 55% 90%, 70% 90%;
+  }
+    50% {
+      background-position: 0% 80%, 0% 20%, 10% 40%, 20% 0%, 30% 30%, 22% 50%, 50% 50%, 65% 20%, 90% 30%;}
+ 100% {
+    background-position: 0% 70%, 0% 10%, 10% 30%, 20% -10%, 30% 20%, 22% 40%, 50% 40%, 65% 10%, 90% 20%;
+  background-size: 0% 0%, 0% 0%,  0% 0%,  0% 0%,  0% 0%,  0% 0%;
+  }
+}
+
+@keyframes bottomBubbles {
+  0%{
+    background-position: 10% -10%, 30% 10%, 55% -10%, 70% -10%, 85% -10%, 70% -10%, 70% 0%;
+  }
+  50% {
+    background-position: 0% 80%, 20% 80%, 45% 60%, 60% 100%, 75% 70%, 95% 60%, 105% 0%;}
+ 100% {
+    background-position: 0% 90%, 20% 90%, 45% 70%, 60% 110%, 75% 80%, 95% 70%, 110% 10%;
+  background-size: 0% 0%, 0% 0%,  0% 0%,  0% 0%,  0% 0%,  0% 0%;
+  }
+}
+table {
+	margin: 0 auto;
+	padding: 2%;
+
+	border-radius: 4px;
+	background-color: white;
+}
+input {
+	width: 100%;
+	height: 40px;
+	padding: 12px;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	outline: none;
+	font-size: 14px;
+	color: #014487;
+}
+select
+{
+	width: 30%;
+	height: 50px;
+	padding: 12px;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	outline: none;
+	font-size: 14px;
+	color: #014487;
+    margin-top:5%;
+    margin-bottom:5%;
+    
+
+}
+
+input:hover {
+	border-color: #014487;
+}
+
+
+::placeholder {
+	color: #969fa4;
+}
+p {
+	text-align: center;
+	font-size: 14px;
+	color: #969fa4;
+	margin: 12px 0;
+}
+input[type="checkbox"] {
+	vertical-align: middle;
+	height: 14px;
+	width: 14px;
+	background-color: red;
+}
+.terms>label {
+	font-size: 14px;
+	color: #969fa4;
+	margin-left: 6px;
+}
+
+
+h1 {
+	text-align: center;
+	font-weight: 500;
+	color: #636363;
+	text-align: 31px;
+}
+.top {
+	width: 100%;
+	background-color: salmon;
+}
+
+</style>
+{% endblock %}

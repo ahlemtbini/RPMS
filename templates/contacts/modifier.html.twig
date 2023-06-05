@@ -1,0 +1,158 @@
+{% extends 'dashbord.html.twig' %}
+{% block body %}
+<div class="main-panel">
+			<div class="content">
+				<div class="page-inner">
+					<div class="page-header">
+						
+					</div>
+                  <div class="row">
+						<div class="col-md-12">
+							<div class="card">
+								<div class="card-header">
+									<h4 class="card-title">Modifier une prospection:</h4><br/>
+{{form_start(form)}}
+<div>
+{{ form_widget(form.COMMERCIAL, {'attr':{'placeholder':'COMMERCIAL'}})}}
+</div>
+<br/>
+<br/>
+<div>
+{{ form_widget(form.CLIENT, {'attr':{'placeholder':'CLIENT'}})}}
+</div>
+<br/>
+<br/>
+<div>
+{{ form_widget(form.CONTACT, {'attr':{'placeholder':'CONTACT'}})}}
+</div>
+<br/>
+<br/>
+<div>
+{{ form_widget(form.POSTE, {'attr':{'placeholder':'POSTE'}})}}
+</div>
+<br/>
+<br/>
+<div>
+{{ form_widget(form.NTEL, {'attr':{'placeholder':'NTEL'}})}}
+</div>
+<br/>
+<br/>
+<div>
+{{ form_widget(form.NPORTABLE, {'attr':{'placeholder':'NPORTABLE'}})}}
+</div>
+<br/>
+<br/>
+<div>
+{{ form_widget(form.email, {'attr':{'placeholder':'email'}})}}
+</div>
+<br/>
+<br/>
+<div>
+{{ form_widget(form.COMMENTAIRES, {'attr':{'placeholder':'COMMENTAIRE'}})}}
+</div>
+<br/>
+<br/>
+<div>
+{{ form_widget(form.etat, {'id':'etat'})}}
+</div>
+<div>
+{{ form_widget(form.date,{'attr':{'label':'date de RDV'}})}}
+</div>
+<div>
+<input type="submit" name="" value="Modifier" class="btn btn-primary">
+</div>
+{{form_end(form)}}
+<style>
+table {
+	width: 50%;
+	margin: 0 auto;
+	padding: 2%;
+
+	border-radius: 4px;
+	background-color: #f2f3f7;
+	min-width: 360px;
+	max-width: 420px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+	border: 1px solid #58677B;
+}
+input {
+	width: 60%;
+	height: 40px;
+	padding: 12px;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	outline: none;
+	font-size: 14px;
+	color: #014487;
+}
+#etat select{
+	width: 60%;
+	height: 50px;
+	padding: 12px;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	outline: none;
+	font-size: 14px;
+	color: #014487;
+    margin-top:5%;
+    
+}
+select
+{
+	width: 20%;
+	height: 50px;
+	padding: 12px;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	outline: none;
+	font-size: 14px;
+	color: #014487;
+    margin-bottom:5%;
+    
+
+}
+
+}
+input:hover {
+	border-color: #014487;
+}
+
+
+::placeholder {
+	color: #969fa4;
+}
+p {
+	text-align: center;
+	font-size: 14px;
+	color: #969fa4;
+	margin: 12px 0;
+}
+input[type="checkbox"] {
+	vertical-align: middle;
+	height: 14px;
+	width: 14px;
+	background-color: red;
+}
+.terms>label {
+	font-size: 14px;
+	color: #969fa4;
+	margin-left: 6px;
+}
+
+
+h1 {
+	text-align: center;
+	font-weight: 500;
+	color: #636363;
+	text-align: 31px;
+}
+.top {
+	width: 100%;
+	background-color: salmon;
+}
+btn{
+        text:white;
+
+}
+</style>
+{% endblock %}

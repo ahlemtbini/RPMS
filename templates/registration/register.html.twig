@@ -1,0 +1,134 @@
+{% block title %}Register{% endblock %}
+{% block head %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="keywords" content="Colorlib Templates">
+    <link href={{ asset('form/vendor/mdi-font/css/material-design-iconic-font.min.css')}} rel="stylesheet" media="all">
+    <link href={{ asset('form/vendor/font-awesome-4.7/css/font-awesome.min.css')}} rel="stylesheet" media="all">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+    <link href={{ asset('form/vendor/select2/select2.min.css')}} rel="stylesheet" media="all">
+    <link href={{ asset('form/vendor/datepicker/daterangepicker.css')}} rel="stylesheet" media="all">
+
+    <link href={{ asset('form/css/main.css')}} rel="stylesheet" media="all">
+    <script src="{{ asset('admin/js/plugin/webfont/webfont.min.js')}}"></script>
+	<script>
+		WebFont.load({
+			google: {"families":["Lato:300,400,700,900"]},
+			custom: {"families":["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands", "simple-line-icons"], urls: ['admin/css/fonts.min.css']},
+			active: function() {
+				sessionStorage.fonts = true;
+			}
+		});
+	</script>
+
+{% endblock %}
+
+{% block body %}
+
+
+
+
+
+
+<div class="main-panel">
+			<div class="content">
+				<div class="page-inner">
+					
+    {% for flashError in app.flashes('verify_email_error') %}
+        <div class="alert alert-danger" role="alert">{{ flashError }}</div>
+    {% endfor %}
+
+    <div class="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins">
+        <div class="wrapper wrapper--w680">
+            <div class="card card-4">
+                <div class="card-body">
+                    <form method="POST">
+        <div class="input-group">
+        <div>
+		  <div class="demo-icon"> <div class="icon-preview" ><a href="{{ path('app_comptes') }}"><i class="fas fa-arrow-left" ></i></a></div> <div class="icon-class"></div> </div>
+        </div>
+         <div>
+         <img src="{{ asset('logo.png')}}"  style="width: 80px;height: 80px;margin-left:40%;">
+        </div>
+        <div>
+        <h2 style="margin-left:25%;">Créer un compte</h2>
+        </div>
+
+	    {{ form_start(registrationForm) }}
+        {{ form_row(registrationForm.email,{'attr': {
+			class: 'input--style-4'
+        }}) }}
+		</div>
+
+		<div class="row row-space">
+        <div class="col-2">
+        <div class="input-group">
+        {{ form_row(registrationForm.nom,{'attr': {
+			class: 'input--style-4',
+        }}) }}
+		</div>
+		</div>
+        <div class="row row-space">
+        <div class="input-group">
+        {{ form_row(registrationForm.prenom,{'attr': {
+			class: 'input--style-4',
+        }}) }}
+		</div>
+		</div>
+
+		<div class="row row-space">
+        <div class="col-2">
+        <div class="input-group" >
+        {{ form_row(registrationForm.EmailPersonnel,{'attr': {
+            class: 'input--style-4'
+        }}) }}
+		</div>
+		</div>
+		<div class="row row-space">
+        <div class="input-group">
+        {{ form_row(registrationForm.numTel,{'attr': {
+			class: 'input--style-4'
+		}}) }}
+		</div>
+		</div>
+		</div>
+
+
+
+
+        <div class="row row-space">
+        <div class="col-2">
+        <div class="input-group">
+         <div class="rs-select2 js-select-simple select--no-search">
+        {{ form_row(registrationForm.poste,{'attr': {
+            class:'select2-selection__rendered'
+		}}) }}
+            <div class="select-dropdown"></div>
+            </div>
+		</div>
+		</div>
+		<div class="row row-space">
+        <div class="input-group">
+         {{ form_row(registrationForm.plainPassword,{'attr': {
+            label: 'mot de passe',
+			class: 'input--style-4',
+		}}) }}
+		</div>
+		</div>
+        <div class="p-t-15">  
+                            <button class="btn btn--radius-2 btn--blue" type="submit">Register</button>
+                        </div>
+		</div>
+
+						
+
+    {{ form_end(registrationForm) }}
+
+    <script src={{ asset('form/vendor/jquery/jquery.min.js')}}></script>
+    <script src={{ asset('form/vendor/select2/select2.min.js')}}></script>
+    <script src={{ asset('form/vendor/datepicker/moment.min.js')}}></script>
+    <script src={{ asset('form/vendor/datepicker/daterangepicker.js')}}></script>
+    <script src={{ asset('form/js/global.js')}}></script>
+
+{% endblock %}

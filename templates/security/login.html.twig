@@ -1,0 +1,39 @@
+{% extends 'security/base.html.twig' %}
+
+{% block title %}Log in!{% endblock %}
+
+{% block body %}
+
+
+
+<form class="login100-form validate-form p-b-33 p-t-5" method="post">
+
+{% if error %}
+        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+
+    {% if app.user %}
+        <div class="mb-3">
+            You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
+        </div>
+    {% endif %}
+
+					<div class="wrap-input100 validate-input" data-validate = "Enter username">
+                        <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="input100" placeholder="Email" autocomplete="email" required autofocus>
+						<span class="focus-input100" data-placeholder="&#xe82a;"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate="Enter password">
+                        <input type="password" name="password" id="inputPassword" class="input100" autocomplete="current-password" placeholder="mot de passe" required>
+						<span class="focus-input100" data-placeholder="&#xe80f;"></span>
+					</div>
+                     <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+					<div class="container-login100-form-btn m-t-32">
+						<button class="login100-form-btn" type="submit">
+							connexion
+						</button>
+					</div>
+
+				</form>
+{% endblock %}

@@ -1,0 +1,203 @@
+{% extends 'dashbord.html.twig' %}
+{% block title %}Statistiques{% endblock %}
+{% block body %}
+<<div class="main-panel">
+			<div class="content">
+				<div class="page-inner">
+
+		<div class="page-header">
+			</div>
+                  <div class="row">
+                      <div class="col-md-12">
+							<div class="card" lang="fr">
+								<div class="card-header" lang="fr">
+									<h4 class="card-title"> 
+                  Représentation graphique et Statistiques
+                  </h4>
+                  <br/>
+                  <br/>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
+<div class="container2">
+  <canvas id="myChart2"  style="height:40vh; width:0%"></canvas>
+</div>
+<script>
+ 
+  var myChart2 = document.getElementById('myChart2').getContext('2d');
+  var radarChart = new Chart(myChart2,{
+
+    type:'line',
+    data:{
+      labels:[""{% for user in user  %},"{{user.prenom}}"{% endfor %}],
+      datasets:[{
+        label:'nombres des prospections ',
+        data:[0{% for user in user  %}{% set i=0 %}{% for contacts in contacts %}{% if contacts.commercial ==  user.prenom  %}{% set i=i+1%}{% endif %}{%endfor%},{{i}}{% endfor %}],
+
+        backgroundColor:[
+        'rgba(255, 99, 132, 0.6)',
+         'rgba(54, 162, 235, 0.6)',
+          'rgba(255, 206, 86, 0.6)',
+           'rgba(75, 192, 192, 0.6)',
+            'rgba(153, 102, 255, 0.6)',
+             'rgba(255, 159, 64, 0.6)'
+
+
+        ],
+        borderWidth:1,
+        borderColor:'#777',
+        hoverBorderWidth:3,
+        hoverBorderColor:'#000'
+      }]
+    },
+    options:{
+
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: true
+          }
+        }]
+      }
+
+    }
+  });
+
+
+</script>
+<br/>
+<br/>
+<br/>
+
+<div class="container3">
+  <canvas id="myChart3"  style="height:40vh; width:0%"></canvas>
+</div>
+<script>
+ 
+  var myChart2 = document.getElementById('myChart3').getContext('2d');
+  var radarChart = new Chart(myChart2,{
+
+    type:'bar',
+    data:{
+      labels:[""{% for user in user  %},"{{user.prenom}}"{% endfor %}],
+      datasets:[{
+        label:'pourcentage de reduction totale ',
+        data:[0{% for user in user  %}{% set i=0 %}{% set x=0 %}{% set somme=0 %}{% for contacts in contacts %}
+        {% for projet in projet %}
+        {% if (contacts.commercial ==  user.prenom) and (projet.ProspectionId ==contacts.id)  %}
+        {% set i=i+1%}
+        {% set x=(projet.PrixVent-projet.PrixNegociation)/100%}
+        {% set somme=somme+x%}
+
+         {% endif %}
+        {%endfor%}
+        {%endfor%}
+        {%if not(i==0)%}
+        ,{{somme/i}}
+        {% else %}
+        ,0
+        {% endif %}
+        {% endfor %}],
+
+
+        backgroundColor:[
+        'rgba(255, 99, 132, 0.6)',
+         'rgba(54, 162, 235, 0.6)',
+          'rgba(255, 206, 86, 0.6)',
+           'rgba(75, 192, 192, 0.6)',
+            'rgba(153, 102, 255, 0.6)',
+             'rgba(255, 159, 64, 0.6)'
+
+
+        ],
+        borderWidth:1,
+        borderColor:'#777',
+        hoverBorderWidth:3,
+        hoverBorderColor:'#000'
+      }]
+    },
+    options:{
+
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: true
+          }
+        }]
+      }
+
+    }
+  });
+
+
+</script>
+
+<br/>
+<br/>
+<br/>
+<div class="container">
+  <canvas id="myChart"  style="height:40vh; width:0%"></canvas>
+</div>
+<script>
+ 
+  var myChart2 = document.getElementById('myChart').getContext('2d');
+  var radarChart = new Chart(myChart2,{
+
+    type:'line',
+    data:{
+      labels:[""{% for user in user  %},"{{user.prenom}}"{% endfor %}],
+      datasets:[{
+        label:'nombres des projets ',
+        data:[0{% for user in user  %}{% set i=0 %}{% for contacts in contacts %}
+        {% for projet in projet %}
+        {% if (contacts.commercial ==  user.prenom) and (projet.ProspectionId ==contacts.id)  %}
+        {% set i=i+1%}
+         {% endif %}
+        {%endfor%}
+        {%endfor%}
+        ,{{i}}{% endfor %}],
+
+        backgroundColor:[
+          'rgba(255, 206, 86, 0.6)',
+           'rgba(75, 192, 192, 0.6)',
+            'rgba(153, 102, 255, 0.6)',
+             'rgba(255, 159, 64, 0.6)'
+
+
+        ],
+        borderWidth:1,
+        borderColor:'#777',
+        hoverBorderWidth:3,
+        hoverBorderColor:'#000'
+      }]
+    },
+    options:{
+
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: true
+          }
+        }]
+      }
+
+    }
+  });
+
+
+</script>
+
+
+         	</div>
+								</div>
+							</div>
+						</div>
+
+                             </div>
+                         </div>         
+                         </div>
+</div>
+</div>
+</div>    
+
+{% endblock %}
+

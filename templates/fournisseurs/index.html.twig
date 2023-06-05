@@ -1,0 +1,134 @@
+
+
+{% extends 'dashbord.html.twig' %}
+{% block title %}listes des CONTACTS{% endblock %}
+{% block body %}
+
+<div class="main-panel">
+			<div class="content">
+				<div class="page-inner">
+
+		<div class="page-header">
+			</div>
+                  <div class="row">
+                      <div class="col-md-12">
+            <table>
+			<tr>
+			 <a href="{{ path('creefournisseurs') }}">
+            <img src={{asset('ajouter.png')}} style="width:5%;hight:5%; margin-left:-80%">
+			 </a>
+			</tr>
+			</table>
+							<div class="card" lang="fr">
+								<div class="card-header" lang="fr">
+									<h4 class="card-title">Fournisseurs :</h4>
+								</div>
+								<div class="card-body">
+									<div class="table-responsive" lang="fr">
+										<table id="multi-filter-select" class="display table table-striped table-hover"  lang="fr">
+											<thead>
+										
+						<tr style="background-color:#0c5b8f; color:white;">
+                            <th>Société</th>
+                            <th>Activité</th>
+                            <th>Contact</th>
+                           <th>Service/produit</th>
+                           <th>NuméroTéléphone</th>
+                           <th>Email</th>
+						   <th>Modifier</th>
+						   <th>Supprimer</th>
+                        </tr>
+											</thead>
+											
+											<tbody>
+                        
+ 
+                            {% for fournisseurs in fournisseurs %}
+                                <td>{{ fournisseurs.SOCIETE|e }}  </td>
+                                <td >{{ fournisseurs.ACTIVITE|e }}  </td>
+                                <td >{{ fournisseurs.CONTACT|e }} </td>
+                                <td  >{{ fournisseurs.SERVICEPOSTE|e }} </td>
+                                <td  >{{ fournisseurs.TEL|e }} </td>
+                                <td  >{{ fournisseurs.EMAIL|e }} </td>
+                                <td  ><center><a href="{{ path('modifierfournisseurs', {id: fournisseurs.id}) }}"><i class="fas fa-edit"></i></a></center></td>
+                                <td  ><center><a href="{{ path('supprimerfournisseurs', {id: fournisseurs.id}) }}" class="fas fa-backspace"></center></td>
+                               </tr>
+                            {% endfor %}
+                                         
+
+                                 </tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+                    </div>
+                </div>
+
+ 		
+<!--   Core JS Files   -->
+	<script src="{{ asset('admin/js/core/jquery.3.2.1.min.js')}}"></script>
+	<script src="{{ asset('admin/js/core/popper.min.js')}}"></script>
+	<script src="{{ asset('admin/js/core/bootstrap.min.js')}}"></script>
+	<!-- jQuery UI -->
+	<script src="{{ asset('admin/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js')}}"></script>
+	<script src="{{ asset('admin/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js')}}"></script>
+	
+	<!-- jQuery Scrollbar -->
+	<script src="{{ asset('admin/assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js')}}"></script>
+	<!-- Datatables -->
+	<script src="{{ asset('admin/assets/js/plugin/datatables/datatables.min.js')}}"></script>
+	<!-- Atlantis JS -->
+	<script src="{{ asset('admin/js/atlantis.min.js')}}"></script>
+	<!-- Atlantis DEMO methods, don't include it in your project! -->
+	<script src="{{ asset('admin/js/setting-demo2.js')}}"></script>
+	<script >
+		$(document).ready(function() {
+			$('#basic-datatables').DataTable({
+			});
+
+			$('#multi-filter-select').DataTable( {
+				"pageLength": 5,
+				initComplete: function () {
+					this.api().columns().every( function () {
+						var column = this;
+						var select = $('<select class="form-control"><option value=""></option></select>')
+						.appendTo( $(column.footer()).empty() )
+						.on( 'change', function () {
+							var val = $.fn.dataTable.util.escapeRegex(
+								$(this).val()
+								);
+
+							column
+							.search( val ? '^'+val+'$' : '', true, false )
+							.draw();
+						} );
+
+						column.data().unique().sort().each( function ( d, j ) {
+							select.append( '<option value="'+d+'">'+d+'</option>' )
+						} );
+					} );
+				}
+			});
+
+			// Add Row
+			$('#add-row').DataTable({
+				"pageLength": 5,
+			});
+
+			var action = '<td> <div class="form-button-action"> <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task"> <i class="fa fa-edit"></i> </button> <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove"> <i class="fa fa-times"></i> </button> </div> </td>';
+
+			$('#addRowButton').click(function() {
+				$('#add-row').dataTable().fnAddData([
+					$("#addName").val(),
+					$("#addPosition").val(),
+					$("#addOffice").val(),
+					action
+					]);
+				$('#addRowModal').modal('hide');
+
+			});
+		});
+	</script>
+
+{% endblock %}

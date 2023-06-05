@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="fr" xml:lang="fr">
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<title>RPMS</title>
+	<meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.css" integrity="sha256-5veQuRbWaECuYxwap/IOE/DAwNxgm4ikX7nrgsqYp88=" crossorigin="anonymous">
+
+	<!-- Fonts and icons --> 
+	<script src="{{ asset('admin/js/plugin/webfont/webfont.min.js')}}"></script>
+	<script>
+		WebFont.load({
+			google: {"families":["Lato:300,400,700,900"]},
+			custom: {"families":["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands", "simple-line-icons"], urls: ['admin/css/fonts.min.css']},
+			active: function() {
+				sessionStorage.fonts = true;
+			}
+		});
+	</script>
+
+	<!-- CSS Files -->
+	<link rel="stylesheet" href="{{ asset('admin/css/bootstrap.min.css')}}">
+	<link rel="stylesheet" href="{{ asset('admin/css/atlantis.min.css')}}">
+
+	
+</head>
+<body>
+	<div class="wrapper">
+		<div class="main-header">
+			<!-- Logo Header -->
+			<div class="logo-header"   style="background:#011B44;">
+				
+				<h5><div style="color:white;">	
+                <img src="{{ asset('logo.png')}}" alt="navbar brand" class="navbar-brand" style="width: 25%;height: 25%; margin-top: 0.2%; ">RPMS</div></h5>
+				
+				<button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse" data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon">
+						<i class="icon-menu"></i>
+					</span>
+				</button>
+				<div class="nav-toggle">
+					
+				</div>
+			</div>
+			<!-- End Logo Header -->
+
+			<!-- Navbar Header -->
+			<nav class="navbar navbar-header navbar-expand-lg" style="background:#0c5b8f;">
+				
+				<div class="container-fluid">
+					
+					<ul class="navbar-nav topbar-nav ml-md-auto align-items-center">
+
+						<li class="nav-item dropdown hidden-caret">
+								<div class="avatar-sm">
+									<img src="{{ asset('admin/img/vide.jpg')}}" alt="..." class="avatar-img rounded-circle">
+								</div>
+						</li>
+						<b style="color:white; margin:3%;"> {{ app.user.nom }} {{ app.user.prenom }}</b>
+                                       
+					</ul>
+				</div>
+			</nav>
+			<!-- End Navbar -->
+		</div>
+
+	<!-- Sidebar -->
+		<div class="sidebar sidebar-style-2">			
+			<div class="sidebar-wrapper scrollbar scrollbar-inner">
+				<div class="sidebar-content">
+					<div class="user">
+						<div class="avatar-sm float-left mr-2">
+							<img src="{{ asset('admin/img/vide.jpg')}}" alt="..." class="avatar-img rounded-circle">
+						</div>
+						<div class="info">
+							<a data-toggle="collapse" href="#collapseExample" aria-expanded="true">
+								<span>
+									{{ app.user.username }}
+									<span class="user-level">{{ app.user.poste }}</span>
+								</span>
+							</a>
+							
+						</div>
+					</div>
+					<ul class="nav nav-primary ">
+				   {#<li class="nav-item ">
+                         <a href="{{ path('app_calendar') }}">
+								<i class="fas fa-calendar-alt"></i>
+                    <div class="icon-class"></div>
+                    <p>Calendrier</p>
+                    </a>
+					</li>#}
+					{% if app.user.poste == "Admin"%}
+					<li class="nav-item ">
+							<a href="{{ path('app_planning') }}">
+								<i class="fas fa-glasses"></i>
+								<p>Planning</p>
+							</a>
+				    	</li>
+					{% endif %}
+					<li class="nav-item">
+							<a data-toggle="collapse" href="#base">
+								<i class="fas fa-layer-group"></i>
+								<p>Base de données</p>
+								<span class="caret"></span>
+							</a>
+							<div class="collapse" id="base">
+								<ul class="nav nav-collapse">
+									<li>
+										<a href="{{ path('app_data') }}">
+											<span class="sub-item">données LM/LShop</span>
+										</a>
+									</li>
+
+									<li>
+										<a href="{{ path('app_contactRPMS') }}">
+											<span class="sub-item"> données RPMS</span>
+										</a>
+									</li>
+								<ul>
+							</div>
+						</li>
+						{% if app.user.poste == "Admin" or app.user.poste == "Commercial" %}
+						<li class="nav-item ">
+							<a href="{{ path('app_contacts') }}">
+								<i class="fas fa-crosshairs"></i>
+								<p>prospection</p>
+							</a>
+				    	</li>
+						{% endif%}
+						<li class="nav-item ">
+                         <a href="{{ path('app_tarif') }}">
+								<i class="fas fa-donate"></i>
+                    <div class="icon-class"></div>
+                    <p>Services et Tarifs</p>
+                    </a>
+					<li class="nav-item ">
+                         <a href="{{ path('app_fournisseurs') }}">
+								<i class="fas fa-handshake"></i>
+                    <div class="icon-class"></div>
+                    <p>Fournisseurs</p>
+                    </a>
+					{% if app.user.poste == "Admin" or app.user.poste == "Commercial" %}
+
+						<li class="nav-item ">
+							<a href="{{ path('app_projet') }}">
+								<i class="fas fa-boxes"></i>
+								<p>Mes projets</p>
+							</a>
+				    	</li>
+					{% endif %}
+					{% if app.user.poste == "Admin" or app.user.poste == "Commercial" %}
+						<li class="nav-item ">
+							<a href="{{ path('app_commission') }}">
+								<i class="fas fa-coins"></i>
+								<p>Mes commissions</p>
+							</a>
+				    	</li>
+					{% endif %}
+					{% if  app.user.poste == "responsable financier"%}
+						<li class="nav-item ">
+							<a href="{{ path('app_financier') }}">
+								<i class="fas fa-coins"></i>
+								<p>Service financier</p>
+							</a>
+				    	</li>
+					{% endif %}
+					{% if app.user.poste == "Admin" or app.user.poste == "Commercial" %}
+
+						<li class="nav-item ">
+                         <a href="{{ path('app_Statistiques') }}">
+								<i class="fas fas fa-chart-pie"></i>
+                    <div class="icon-class"></div>
+                    <p>Statistiques</p>
+                    </a>
+					{% endif %}
+						{% if  app.user.poste == "Admin"%}
+						 <li class="nav-item ">
+                         <a href="{{ path('app_comptes') }}">
+								<i class="fas fa-user-alt"></i>
+                    <div class="icon-class"></div>
+                    <p>Gestion des Comptes</p>
+                    </a>
+					{% endif %}
+					
+                        <li class="nav-item " style="margin-top:60%;">
+						  <div  style="background:#011B44;">
+							<a href="{{ path('app_logout') }}">
+								<i class="icon-logout"></i>
+								<p>deconnexion</p>
+							</a>
+							</div>
+				    	</li>                        
+						
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- End Sidebar -->
+									<center>{% block stylesheet %}{% endblock %}
+								{% block body %}{% endblock %}
+						  {% block javascripts %}{% endblock %}</center>
+
+
+
+	<!--   Core JS Files   -->
+	<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.js" integrity="sha256-XCdgoNaBjzkUaEJiauEq+85q/xi/2D4NcB3ZHwAapoM=" crossorigin="anonymous"></script>
+
+	<script src="{{ asset('admin/js/core/jquery.3.2.1.min.js')}}"></script>
+	<script src="{{ asset('admin/js/core/popper.min.js')}}"></script>
+	<script src="{{ asset('admin/js/core/bootstrap.min.js')}}"></script>
+
+	<!-- jQuery UI -->
+	<script src="{{ asset('admin/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js')}}"></script>
+	<script src="{{ asset('admin/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js')}}"></script>
+
+	<!-- jQuery Scrollbar -->
+	<script src="{{ asset('admin/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js')}}"></script>
+
+
+	<!-- Chart JS -->
+	<script src="{{ asset('admin/js/plugin/chart.js/chart.min.js')}}"></script>
+
+	<!-- jQuery Sparkline -->
+	<script src="{{ asset('admin/js/plugin/jquery.sparkline/jquery.sparkline.min.js')}}"></script>
+
+	<!-- Chart Circle -->
+	<script src="{{ asset('admin/js/plugin/chart-circle/circles.min.js')}}"></script>
+
+	<!-- Datatables -->
+	<script src="{{ asset('admin/js/plugin/datatables/datatables.min.js')}}"></script>
+
+	<!-- Bootstrap Notify -->
+	<script src="{{ asset('admin/js/plugin/bootstrap-notify/bootstrap-notify.min.js')}}"></script>
+
+	<!-- jQuery Vector Maps -->
+	<script src="{{ asset('admin/js/plugin/jqvmap/jquery.vmap.min.js')}}"></script>
+	<script src="{{ asset('admin/js/plugin/jqvmap/maps/jquery.vmap.world.js')}}"></script>
+
+	<!-- Sweet Alert -->
+	<script src="{{ asset('admin/js/plugin/sweetalert/sweetalert.min.js')}}"></script>
+
+	<!-- Atlantis JS -->
+	<script src="{{ asset('admin/js/atlantis.min.js')}}"></script>
+
+</body>
+</html>
